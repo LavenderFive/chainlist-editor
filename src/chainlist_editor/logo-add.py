@@ -52,7 +52,7 @@ def get_networks_validator_registry(validator_name: str) -> list:
 if __name__ == "__main__":
     load_dotenv()
 
-    directory = os.getenv("CHAINLIST_DIRECTOTY_PATH")
+    directory = os.getenv("CHAINLIST_DIRECTORY_PATH")
     networks = get_networks_validator_registry(os.getenv("VALIDATOR_REGISTRY_NAME"))
 
     if not os.getenv("LOGO_URL"):
