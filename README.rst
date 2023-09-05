@@ -5,8 +5,9 @@ chainlist-editor
     A small set of scripts that can alter the state of the cosmostation chainlist!
 
 
-Note
+Instructions
 ====
 
-This project has been set up using PyScaffold 4.5. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+1. poetry init
+2. Replace variables in the .env file
+3. run scripts
