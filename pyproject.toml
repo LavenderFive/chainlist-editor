@@ -1,9 +1,18 @@
-[build-system]
-# AVOID CHANGING REQUIRES: IT WILL BE UPDATED BY PYSCAFFOLD!
-requires = ["setuptools>=46.1.0", "setuptools_scm[toml]>=5"]
-build-backend = "setuptools.build_meta"
+[tool.poetry]
+name = "chainlist-editor"
+version = "0.1.0"
+description = ""
+authors = ["Ertemann <gijs@lavenderfive.com>"]
+readme = "README.md"
+packages = [{include = "chainlist_editor"}]
 
-[tool.setuptools_scm]
-# For smarter version schemes and other configuration options,
-# check out https://github.com/pypa/setuptools_scm
-version_scheme = "no-guess-dev"
+[tool.poetry.dependencies]
+python = "^3.11"
+retry = "^0.9.2"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

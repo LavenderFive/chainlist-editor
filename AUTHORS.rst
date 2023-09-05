@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* gjvanleeuwen <ertemann.secretnetwork@gmail.com>
+* Ertemann <gijs@lavenderfive.com>
