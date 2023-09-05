@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 
 def download_image(url, file_path, file_name):
     full_path = os.path.join(file_path, file_name)
-    print(full_path)
     r = requests.get(url)
     with open(full_path, "wb") as f:
         f.write(r.content)
