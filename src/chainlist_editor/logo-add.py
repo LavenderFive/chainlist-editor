@@ -13,7 +13,10 @@ def download_image(url, file_path, file_name):
     r = requests.get(url)
     with open(full_path, "wb") as f:
         f.write(r.content)
-
+        
+def copy_image(logo_path, file_path, file_name):
+    full_path = os.path.join(file_path, file_name)
+    os.system(f'copy {logo_path} {full_path}')
 
 class BadRequestException(Exception):
     pass
@@ -55,11 +58,19 @@ if __name__ == "__main__":
     directory = os.getenv("CHAINLIST_DIRECTORY_PATH")
     networks = get_networks_validator_registry(os.getenv("VALIDATOR_REGISTRY_NAME"))
 
-    if not os.getenv("LOGO_URL"):
+    if os.getenv("LOGO_LOCAL"):
+        logo_url = os.getenv("LOGO_LOCAL")
+        local = True
+    elif not os.getenv("LOGO_URL"):
         logo_url = networks[0]["image"]
+        local = False
+    else:
+        logo_url = os.getenv("LOGO_URL")
+        local = False
 
     for network in networks:
         network_name = network["name"]
+        print(network_name)
         valoper_address = network["address"]
         file_name = f"{valoper_address}{logo_url[-4:]}"
 
@@ -84,7 +95,10 @@ if __name__ == "__main__":
             current_files = glob.glob(f"{full_path[:-4]}*")
             for file in current_files:
                 os.remove(file)
-            download_image(logo_url, file_path, file_name)
+            if not local:
+                download_image(logo_url, file_path, file_name)
+            else:
+                copy_image(logo_url, file_path, file_name)
         except Exception as e:
             print(
                 f"This is not a chain supported by the Chainlist -- {network_name} -- ",
